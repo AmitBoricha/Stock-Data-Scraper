@@ -44,3 +44,12 @@ def scrape_stock_data(stock_name: str) -> dict:
                     stock_details[current_text] = next_text
         res['stock_details'] = stock_details
         return res
+
+    else:
+        print("Error: Unable to fetch data")
+        return {'error': 'unable to scrape'}
+    
+def main():
+    stock_symbol = input("Enter the stock symbol: ")
+    stock_data = scrape_stock_data(stock_symbol)
+    print(stock_data)
