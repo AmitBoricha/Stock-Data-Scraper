@@ -33,3 +33,14 @@ def scrape_stock_data(stock_name: str) -> dict:
         res['stock_name'] = stock_name
         res['scrape_timestamp'] = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
         stock_details = {}
+
+        for row in table.find_all('tr'):
+            cell_iterator = iter(row.find_all('td'))
+            for current, next_value in zip(cell_iterator, cell_iterator):
+                current_text = current.get_text(strip=True)
+                next_text = next_value.get_text(strip=True)
+
+                if current_text and next_text:
+                    stock_details[current_text] = next_text
+        res['stock_details'] = stock_details
+        return res
