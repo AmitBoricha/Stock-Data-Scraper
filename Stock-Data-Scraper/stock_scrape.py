@@ -53,3 +53,7 @@ def main():
     stock_symbol = input("Enter the stock symbol: ")
     stock_data = scrape_stock_data(stock_symbol)
     print(stock_data)
+
+
+if __name__ == "__main__":
+    main()
